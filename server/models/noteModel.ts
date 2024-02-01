@@ -1,7 +1,15 @@
 import mongoose from 'mongoose';
 // const validator = require('validator');
 
-const noteSchema = new mongoose.Schema({
+interface Note {
+  body: string;
+  selected: boolean;
+  pinned: boolean;
+  archived: boolean;
+  createdAt: Date;
+}
+
+const noteSchema = new mongoose.Schema<Note>({
   body: {
     type: String,
     required: [true, `A note can't be empty`],

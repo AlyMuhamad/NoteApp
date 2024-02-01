@@ -1,9 +1,17 @@
-import { NextFunction } from 'express';
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 
-const userSchema = new mongoose.Schema({
+interface User {
+  name: string;
+  email: string;
+  photo: string;
+  password: string;
+  passwordConfirm: string | undefined;
+  passwordChangedAt: Date;
+}
+
+const userSchema = new mongoose.Schema<User>({
   name: {
     type: String,
     required: [true, 'Please tell us your name'],
@@ -26,7 +34,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a password'],
     validate: {
-      validator: function (el: string) {
+      validator: function (this: any, el: string) {
         return el === this.password;
       },
       message: 'passwords are not the same',
@@ -36,7 +44,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // DOCUMENT MIDDLEWARE
-userSchema.pre('save', async function (next: NextFunction) {
+userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
 
   this.password = await bcrypt.hash(this.password, 12);
@@ -54,12 +62,13 @@ userSchema.methods.correctPassword = async function (
 };
 
 // ANOTHER INSTANCE METHOD
-userSchema.methods.changePasswordAfter = async function (JWTTimestamp: number) {
+userSchema.methods.changedPasswordAfter = async function (
+  JWTTimestamp: number,
+) {
   if (this.passwordChangedAt) {
-    const changedTimestamp: number = parseInt(
-      this.passwordChangedAt.getTime() / 1000,
-      10,
-    );
+    // check if you need parseInt() here
+    const changedTimestamp: number = this.passwordChangedAt.getTime() / 1000;
+
     return JWTTimestamp < changedTimestamp;
   }
   return false;
