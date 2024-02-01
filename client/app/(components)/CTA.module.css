@@ -1,0 +1,162 @@
+.section {
+  margin: 2rem auto;
+  max-width: 130rem;
+  padding: 0 3.2rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: #dbeafe;
+  padding: 4.2rem 8rem;
+  border-radius: 1rem;
+}
+
+.headline {
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 2rem;
+}
+
+.explore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input {
+  padding: 1.6rem 6.4rem 1.6rem 1.6rem;
+  border-radius: 1rem;
+  border: none;
+}
+
+.input::placeholder {
+  font-size: 2rem;
+}
+
+.support {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-bottom: 2px solid var(--color-brand-500);
+}
+
+.support:hover {
+  color: #fff;
+  background-color: #818cf8;
+}
+
+.btn {
+  font-size: 1.4rem;
+  padding: 1.2rem 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  color: var(--color-brand-50);
+  background-color: var(--color-brand-600);
+  border: none;
+  border-radius: 0.9rem;
+}
+
+.btn:hover {
+  background-color: var(--color-brand-700);
+}
+
+.signupBtn {
+  font-size: 2rem;
+  padding: 1.2rem 1.6rem;
+}
+
+.exploreBtn {
+  /* font-size: 2rem; */
+  border: 0.1rem solid var(--color-brand-500);
+  color: var(--color-brand-500);
+  background-color: #fff;
+  font-size: 1.8rem;
+  padding: 1.2rem 1.2rem;
+}
+.exploreBtn:hover {
+  background-color: #fff;
+}
+
+/* RESONSIVENESS */
+@media (max-width: 84.375em) {
+  .section {
+    max-width: 110rem;
+  }
+  .headline {
+    font-size: 3rem;
+  }
+  .description {
+    font-size: 1.8rem;
+  }
+  .input::placeholder {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 75em) {
+  .section {
+    max-width: 100rem;
+  }
+}
+
+@media (max-width: 62.5em) {
+  .section {
+    max-width: 90rem;
+  }
+  .headline {
+    font-size: 2.8rem;
+  }
+  .description {
+    font-size: 1.6rem;
+  }
+  .input {
+    font-size: 1.6rem;
+  }
+  .input::placeholder {
+    font-size: 1.6rem;
+  }
+  .signupBtn {
+    font-size: 1.6rem;
+    padding: 1rem 1.4rem;
+  }
+  .exploreBtn {
+    font-size: 1.4rem;
+    padding: 1rem 1rem;
+  }
+}
+
+@media (max-width: 55em) {
+  .section {
+    max-width: 78rem;
+  }
+}
+
+@media (max-width: 35.625em) {
+  .input {
+    padding: 1.2rem 5.2rem 1.2rem 1.2rem;
+  }
+}
+
+@media (max-width: 29.6875em) {
+  .headline {
+    font-size: 2.4rem;
+  }
+  .description {
+    font-size: 1.4rem;
+  }
+  .input {
+    padding: 1rem 4.6rem 1rem 1rem;
+  }
+  .input::placeholder {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,110 @@
+.section {
+  margin: 6rem auto;
+  max-width: 130rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 3.2rem;
+}
+
+.label {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-brand-500);
+  align-self: flex-start;
+}
+
+.headline {
+  font-size: 3.2rem;
+  font-weight: 600;
+}
+
+.subHead {
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+}
+
+.steps {
+  display: flex;
+  gap: 2.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+
+.order {
+  font-size: 10rem;
+  font-weight: 700;
+  color: #93c5fd;
+}
+
+.orderedStep {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  display: inline-block;
+  align-self: self-start;
+  font-size: 2.4rem;
+  font-weight: bold;
+  border-bottom: 4px solid var(--color-brand-500);
+}
+
+.footer {
+  font-size: 1.8rem;
+  margin-top: 3rem;
+}
+
+/* RESONSIVENESS */
+@media (max-width: 84.375em) {
+  .section {
+    max-width: 110rem;
+  }
+  .headline {
+    font-size: 3rem;
+  }
+  .subHead {
+    font-size: 2rem;
+  }
+  .steps {
+    max-width: 110rem;
+  }
+}
+
+@media (max-width: 75em) {
+  .section {
+    max-width: 100rem;
+  }
+}
+
+@media (max-width: 62.5em) {
+  .section {
+    max-width: 90rem;
+  }
+}
+
+@media (max-width: 55em) {
+  .section {
+    max-width: 78rem;
+  }
+}
+
+@media (max-width: 35.625em) {
+}
+
+@media (max-width: 29.6875em) {
+}

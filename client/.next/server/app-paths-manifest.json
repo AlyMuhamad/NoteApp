@@ -1,0 +1,4 @@
+{
+  "/addNotes/page": "app/addNotes/page.js",
+  "/archivedNotes/page": "app/archivedNotes/page.js"
+}

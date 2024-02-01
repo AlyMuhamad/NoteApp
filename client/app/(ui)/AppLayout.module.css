@@ -1,0 +1,26 @@
+.appLayout {
+  display: grid;
+  grid-template-columns: auto 2fr 3fr;
+  overflow: hidden;
+}
+
+.core {
+  padding: 0 2rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 87.5em) {
+  .appLayout {
+    grid-template-columns: auto 2fr 3fr;
+  }
+}
+
+@media (max-width: 55em) {
+  .appLayout {
+    grid-column: auto 1fr;
+    grid-row: 1fr 1fr;
+  }
+  .core {
+    grid-column: 2/-1;
+  }
+}

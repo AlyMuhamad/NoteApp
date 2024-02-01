@@ -1,0 +1,36 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./app/loading.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+.loading_spinner__vCHK7 {
+  border: 1.6rem solid #f3f3f3;
+  border-top: 1.6rem #4338ca solid;
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: loading_spin__pdbmM 2s linear infinite;
+}
+
+@keyframes loading_spin__pdbmM {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 55em) {
+  .loading_spinner__vCHK7 {
+    height: 8rem;
+    width: 8rem;
+    border: 0.8rem solid #f3f3f3;
+    border-top: 0.8rem #4338ca solid;
+  }
+}
+
