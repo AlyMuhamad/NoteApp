@@ -1,6 +1,6 @@
 # Notesapp
 
-**[Notes app](https://notesapp-lovat.vercel.app/)** is a web app that allow users to add new notes and edit, archive and delete existing notes.
+**[Notes app](https://note-apps-phi.vercel.app/)** is a web app that allow users to add new notes and edit, archive and delete existing notes.
 
 ## quick notes about the project
 
