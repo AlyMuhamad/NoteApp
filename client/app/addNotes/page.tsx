@@ -1,15 +1,19 @@
 'use client';
 
 import styles from './page.module.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AppLayout from '../(ui)/AppLayout';
 import { Editor } from '@tinymce/tinymce-react';
 import Link from 'next/link';
 
 function AddNotes() {
   const [value, setValue] = useState<string | undefined>();
-
   const [text, setText] = useState<string | undefined>('');
+  const [authenticated, setAuthenticated] = useState(
+    typeof window !== 'undefined' && localStorage.getItem('token')
+      ? true
+      : false
+  );
 
   async function handleSubmit(e: any) {
     e.preventDefault();
@@ -22,24 +26,19 @@ function AddNotes() {
       },
       body: JSON.stringify({
         body: text,
+        user: '65c4d343a1d977f90308ca2a',
       }),
     };
 
-    await fetch('http://127.0.0.1:8000/notes/addNotes', requestOptions);
+    if (authenticated) {
+      await fetch('http://127.0.0.1:5000/notes/addNotes', requestOptions);
+    }
+
     setText('');
   }
 
   return (
     <AppLayout>
-      <div style={{ marginBottom: '2rem' }}>
-        * Your notes will not be saved unless you have an account{' '}
-        <Link
-          href="/"
-          style={{ color: '#4338ca', textDecoration: 'underline' }}
-        >
-          Login/Signup
-        </Link>
-      </div>
       <Editor
         apiKey="52rb5jrn1gbmngwnhw3k5ngd5eqqrhv4lpkmvh8xycaqxmeu"
         onEditorChange={(newValue, editor) => {
@@ -57,7 +56,7 @@ function AddNotes() {
           body_class: 'my_class',
           skin: 'borderless',
           max_width: 800,
-          height: 600,
+          height: 630,
           // max_height: 600,
           resize: false,
           branding: false,

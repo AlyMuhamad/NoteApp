@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
+import { NextFunction } from 'express';
 
 interface User {
   name: string;
@@ -8,7 +10,10 @@ interface User {
   photo: string;
   password: string;
   passwordConfirm: string | undefined;
-  passwordChangedAt: Date;
+  passwordChangedAt: Date | number;
+  passwordResetToken: string | undefined;
+  passwordResetExpires: Date | undefined;
+  active: boolean;
 }
 
 const userSchema = new mongoose.Schema<User>({
@@ -41,7 +46,21 @@ const userSchema = new mongoose.Schema<User>({
     },
   },
   passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
+  active: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
 });
+
+// VIRTUAL POPULATING
+// userSchema.virtual('notes', {
+//   ref: 'Note',
+//   foreignField: 'user',
+//   localField: '_id',
+// });
 
 // DOCUMENT MIDDLEWARE
 userSchema.pre('save', async function (next) {
@@ -50,6 +69,21 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
 
+  next();
+});
+
+// ANOTHER DOCUMENT MIDDLEWARE
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password') || this.isNew) return next();
+  this.passwordChangedAt = Date.now() - 1000;
+
+  next();
+});
+
+// QUERY MIDDLEWARE
+userSchema.pre(/^find/, function (this: any, next) {
+  // this points to the current query
+  this.find({ active: { $ne: false } });
   next();
 });
 
@@ -62,17 +96,33 @@ userSchema.methods.correctPassword = async function (
 };
 
 // ANOTHER INSTANCE METHOD
-userSchema.methods.changedPasswordAfter = async function (
-  JWTTimestamp: number,
-) {
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp: any) {
   if (this.passwordChangedAt) {
-    // check if you need parseInt() here
-    const changedTimestamp: number = this.passwordChangedAt.getTime() / 1000;
+    const changedTimestamp: any = parseInt(
+      (this.passwordChangedAt.getTime() / 1000) as any,
+      10,
+    );
 
     return JWTTimestamp < changedTimestamp;
   }
   return false;
 };
 
+// another instance method for resetting the password
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+
+  this.passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  // password token expires in 10 minutes
+  this.passwordResetExpires = Date.now() + 600000;
+
+  return resetToken;
+};
+
 const User = mongoose.model('User', userSchema);
+
 export default User;

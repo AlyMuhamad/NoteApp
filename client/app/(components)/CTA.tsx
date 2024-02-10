@@ -1,5 +1,6 @@
 import { Ref, RefObject } from 'react';
 import styles from './CTA.module.css';
+import Link from 'next/link';
 
 interface CTAProps {
   scrollToPricing: RefObject<HTMLButtonElement>;
@@ -22,16 +23,9 @@ const CTA: React.FC<CTAProps> = ({ scrollToPricing }) => {
           Our powerful features are designed to enhance your productivity and
           creativity.
         </div>
-        <div>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Enter your email address"
-          />
-          <button className={`${styles.btn} ${styles.signupBtn}`}>
-            Sign up
-          </button>
-        </div>
+        <Link href="/signup" className={`${styles.btn} ${styles.signupBtn}`}>
+          Sign up
+        </Link>
         <div className={styles.explore}>
           <div className={styles.description}>
             Still contemplating? Explore our premium plans for more features and

@@ -1,35 +1,7 @@
 import styles from './Footer.module.css';
 import styled from 'styled-components';
 import { FaFacebook, FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
-
-const SiteMap = [
-  {
-    title: 'Notes',
-    links: [
-      { id: 1, text: 'Create an account' },
-      { id: 2, text: 'Login' },
-      { id: 3, text: 'Pricing' },
-    ],
-  },
-  {
-    title: 'About',
-    links: [
-      { id: 4, text: 'Contact us' },
-      { id: 5, text: 'Our team' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [{ id: 6, text: 'Blog' }],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { id: 7, text: 'terms of use' },
-      { id: 8, text: 'privay policy' },
-    ],
-  },
-];
+import Link from 'next/link';
 
 const SocialIcon = styled(FaFacebook)`
   font-size: 3.2rem;
@@ -56,16 +28,42 @@ function Footer() {
             <SocialIcon as={FaYoutube} />
           </div>
         </div>
-        {SiteMap.map(sitemap => (
-          <div className={styles.footerLinks} key={sitemap.title}>
-            <div className={styles.linkHead}>{sitemap.title}</div>
-            {sitemap.links.map(link => (
-              <div className={styles.linkText} key={link.id}>
-                {link.text}
-              </div>
-            ))}
-          </div>
-        ))}
+        <div className={styles.footerLinks}>
+          <div className={styles.linkHead}>Notes</div>
+          <Link href="/signup" className={styles.linkText}>
+            Create an account
+          </Link>
+          <Link href="/signup" className={styles.linkText}>
+            Login
+          </Link>
+          <Link href="/" className={styles.linkText}>
+            Pricing
+          </Link>
+        </div>
+        <div className={styles.footerLinks}>
+          <div className={styles.linkHead}>About</div>
+          <Link href="/contact" className={styles.linkText}>
+            Contact us
+          </Link>
+          <Link href="/" className={styles.linkText}>
+            Our team
+          </Link>
+        </div>
+        <div className={styles.footerLinks}>
+          <div className={styles.linkHead}>Resources</div>
+          <Link href="/blog" className={styles.linkText}>
+            Blog
+          </Link>
+        </div>
+        <div className={styles.footerLinks}>
+          <div className={styles.linkHead}>Legal</div>
+          <Link href="/" className={styles.linkText}>
+            Terms of use
+          </Link>
+          <Link href="/" className={styles.linkText}>
+            Privacy policy
+          </Link>
+        </div>
       </div>
     </div>
   );

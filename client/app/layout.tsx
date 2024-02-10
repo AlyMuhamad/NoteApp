@@ -1,11 +1,13 @@
 'use client';
 import './globals.css';
+import AuthProvider from './(hooks)/AuthProvider';
 
-const RootLayout: React.FC = ({ children }) => {
-  // export default function RootLayout({ children }) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <AuthProvider>
+        <body>{children}</body>
+      </AuthProvider>
     </html>
   );
 };

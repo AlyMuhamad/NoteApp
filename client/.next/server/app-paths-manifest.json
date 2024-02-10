@@ -1,4 +1,9 @@
 {
   "/addNotes/page": "app/addNotes/page.js",
-  "/archivedNotes/page": "app/archivedNotes/page.js"
+  "/user/[id]/page": "app/user/[id]/page.js",
+  "/settings/page": "app/settings/page.js",
+  "/calender/page": "app/calender/page.js",
+  "/page": "app/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/signup/page": "app/signup/page.js"
 }

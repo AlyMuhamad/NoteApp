@@ -1,0 +1,47 @@
+.section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 40rem;
+  background-color: var(--color-brand-300);
+}
+
+.sideContent {
+  padding: 10rem 2rem;
+}
+
+.sideLinks {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 2rem;
+}
+
+.closeBtn {
+  align-self: flex-start;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  font-size: 3rem;
+}
+
+.closeBtn:hover {
+  color: #fff;
+}
+
+.menuLink {
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.menuLink:hover {
+  background-color: #4f46e5;
+  font-size: 2.2rem;
+  color: #fff;
+}

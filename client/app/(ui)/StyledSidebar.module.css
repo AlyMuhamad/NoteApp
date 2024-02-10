@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  height: 85vh;
 }
 
+.navLink,
 .navLink:link,
 .navLink:visited {
   display: flex;
@@ -39,6 +41,53 @@
   color: var(--color-brand-600);
 }
 
+.account {
+  cursor: pointer;
+  user-select: none;
+}
+
+.menuOpt {
+  position: absolute;
+  left: 3%;
+  top: 55%;
+  background-color: var(--color-brand-100);
+  /* padding: 1rem; */
+  border-radius: 0.9rem;
+  width: 15rem;
+  /* border: 1px solid #000; */
+}
+
+.profileOpt {
+  display: flex;
+  flex-direction: column;
+  /* gap: 0.5rem; */
+}
+
+.optLink {
+  padding: 1rem;
+  border-radius: 0.9rem;
+}
+.optLink:hover {
+  background-color: #4f46e5;
+  color: #fff;
+}
+
+.unauth {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.authLink {
+  padding: 0.2rem;
+  text-decoration: underline;
+}
+
+.authLink:hover {
+  background-color: #4f46e5;
+  color: #fff;
+}
+
+/* RESPONSIVENESS */
 @media (max-width: 84.375em) {
   .navList {
     display: none;

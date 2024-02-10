@@ -5,6 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import image from '../(assets)/(images)/9.jpg';
 import { RefObject } from 'react';
+import Header from '../(ui)/Header';
+
+// import dynamic from 'next/dynamic';
+// const Header = dynamic(() => import('../(ui)/Header'), { ssr: false });
 
 const HeroImage = styled(Image)`
   @media (max-width: 43.75em) {
@@ -26,20 +30,7 @@ const HeroSection: React.FC<HeroProps> = ({ scrollToSteps }) => {
   return (
     <div>
       <div className={styles.section}>
-        <div className={styles.header}>
-          <Link href="/" className={styles.headerLink}>
-            Home
-          </Link>
-          <Link href="/" className={styles.headerLink}>
-            Blog
-          </Link>
-          <Link href="/" className={styles.headerLink}>
-            Contact
-          </Link>
-          <Link href="/" type="primary" className={styles.headerLink}>
-            Login/Register
-          </Link>
-        </div>
+        <Header />
         <div className={styles.content}>
           <div className={styles.headline}>
             Notes: Ignite Your Creativity, Conquer Your Productivity Goals!

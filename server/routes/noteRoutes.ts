@@ -6,6 +6,7 @@ import {
   updateNote,
   deleteNote,
 } from '../controllers/noteController';
+import { protect } from '../controllers/authController';
 
 const router = express.Router();
 router.route('/').get(getAllNotes).post(createNote);

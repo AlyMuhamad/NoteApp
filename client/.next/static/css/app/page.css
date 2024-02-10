@@ -1,3 +1,95 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./app/(ui)/SideMenu.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+.SideMenu_section__ylQWS {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 40rem;
+  background-color: var(--color-brand-300);
+}
+
+.SideMenu_sideContent__aqddu {
+  padding: 10rem 2rem;
+}
+
+.SideMenu_sideLinks__YXDqN {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 2rem;
+}
+
+.SideMenu_closeBtn__X32I2 {
+  align-self: flex-start;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  font-size: 3rem;
+}
+
+.SideMenu_closeBtn__X32I2:hover {
+  color: #fff;
+}
+
+.SideMenu_menuLink__6g93U {
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.SideMenu_menuLink__6g93U:hover {
+  background-color: #4f46e5;
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./app/(ui)/Header.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.Header_header__fiZbA {
+  display: flex;
+  gap: 1.4rem;
+  grid-column: 1/-1;
+  padding-top: 2rem;
+}
+
+.Header_headerLink__IPWpk:link,
+.Header_headerLink__IPWpk:visited {
+  padding: 1.2rem 2.4rem;
+  font-size: 1.8rem;
+  border-radius: 1rem;
+}
+
+.Header_headerLink__IPWpk:hover {
+  color: var(--color-brand-500);
+  box-shadow: inset 0 0 0 1px var(--color-brand-500);
+}
+
+.Header_account__xjVfs {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.Header_currentRoute___B7uX {
+  color: var(--color-brand-500);
+}
+
+/* .profileOpt {
+  position: absolute;
+  display: flex;
+  margin-left: auto;
+  gap: 1rem;
+  align-items: center;
+} */
+
 /*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./app/(components)/HeroSection.module.css ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************/
@@ -15,32 +107,6 @@
   max-width: 130rem;
   scrollbar-color: red orange;
   scrollbar-width: thin;
-}
-
-.HeroSection_header__RzqXm {
-  display: flex;
-  gap: 1.4rem;
-  grid-column: 1/-1;
-  padding-top: 2rem;
-}
-
-.HeroSection_headerLink__njyCY:link,
-.HeroSection_headerLink__njyCY:visited {
-  padding: 1.2rem 2.4rem;
-  font-size: 1.8rem;
-  border-radius: 1rem;
-}
-
-.HeroSection_headerLink__njyCY:hover {
-  color: var(--color-brand-500);
-  box-shadow: inset 0 0 0 1px var(--color-brand-500);
-}
-
-.HeroSection_headerLink__njyCY:last-child {
-  margin-left: auto;
-  border: 0.1rem solid var(--color-brand-500);
-  color: #fff;
-  background-color: var(--color-brand-500);
 }
 
 .HeroSection_content__qgDNT {
@@ -538,16 +604,6 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-}
-
-.CTA_input__xG_kE {
-  padding: 1.6rem 6.4rem 1.6rem 1.6rem;
-  border-radius: 1rem;
-  border: none;
-}
-
-.CTA_input__xG_kE::placeholder {
-  font-size: 2rem;
 }
 
 .CTA_support__iwxIp {

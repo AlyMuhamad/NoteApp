@@ -3,10 +3,12 @@ import mongoose from 'mongoose';
 
 interface Note {
   body: string;
-  selected: boolean;
   pinned: boolean;
   archived: boolean;
   createdAt: Date;
+  user: any;
+  toJSON: any;
+  toObject: any;
 }
 
 const noteSchema = new mongoose.Schema<Note>({
@@ -16,10 +18,6 @@ const noteSchema = new mongoose.Schema<Note>({
     minlength: [3, `A note can't be less than 3 characters`],
     unique: true,
     trim: true,
-  },
-  selected: {
-    type: Boolean,
-    default: false,
   },
   pinned: {
     type: Boolean,
@@ -33,7 +31,21 @@ const noteSchema = new mongoose.Schema<Note>({
     type: Date,
     default: Date.now,
   },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: [true, 'A note must belong to a user'],
+  },
+
+  // toJSON: { virtuals: true },
+  // toObject: { virtuals: true },
 });
+
+//  POPULATING
+// noteSchema.pre(/^find/, function (this: any, next) {
+//   this.populate({ path: 'user', select: '-__v -passwordChangedAt' });
+//   next();
+// });
 
 const Note = mongoose.model('Note', noteSchema);
 

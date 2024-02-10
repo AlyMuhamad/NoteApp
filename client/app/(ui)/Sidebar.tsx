@@ -14,7 +14,6 @@ function Sidebar() {
 
   return (
     <div className={styles.section}>
-      <div style={{ fontSize: '2.4rem' }}>Logo</div>
       <nav>
         <div className={styles.menu}>
           <IoMenuOutline onClick={handleMenu} />

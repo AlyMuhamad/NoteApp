@@ -19,31 +19,13 @@ interface Note {
   archived: boolean;
 }
 
-const style = {
-  fontSize: '2.4rem',
-  color: 'black',
-  cursor: 'pointer',
-};
-
-const style2 = {
-  fontSize: '2.2rem',
-  color: 'black',
-};
-
-const StyledImage = styled(Image)`
-  width: 30rem;
-  height: 22.7rem;
-
-  @media (max-width: 55em) {
-    width: 40rem;
-    height: 29rem;
-  }
-`;
-
 function SavedNotes() {
-  const [selectedNote, setSelectedNote] = useState(true);
+  const [DBnotes, setDBnotes] = useState<Note[]>([]);
+  const [DBnoteSelected, setDBnoteSelected] = useState<Note | undefined>(
+    {} as Note
+  );
 
-  function handleEdit(item: boolean) {}
+  function handleEdit(note: Note) {}
 
   async function handlePin(note: Note) {
     const requestOptions = {
@@ -56,7 +38,7 @@ function SavedNotes() {
       }),
     };
     await fetch(
-      `http://127.0.0.1:8000/notes/addNotes/${note._id}`,
+      `http://localhost:5000/notes/addNotes/${note._id}`,
       requestOptions
     );
 
@@ -74,7 +56,7 @@ function SavedNotes() {
       }),
     };
     await fetch(
-      `http://127.0.0.1:8000/notes/addNotes/${note._id}`,
+      `http://127.0.0.1:5000/notes/addNotes/${note._id}`,
       requestOptions
     );
 
@@ -87,12 +69,10 @@ function SavedNotes() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        archived: true,
-      }),
+      body: JSON.stringify({ archived: true }),
     };
     await fetch(
-      `http://127.0.0.1:8000/notes/addNotes/${note._id}`,
+      `http://127.0.0.1:5000/notes/addNotes/${note._id}`,
       requestOptions
     );
 
@@ -102,67 +82,51 @@ function SavedNotes() {
   async function handleDelete(note: Note) {
     const deleteRequest = { method: 'DELETE' };
     await fetch(
-      `http://127.0.0.1:8000/notes/addNotes/${note._id}`,
+      `http://127.0.0.1:5000/notes/addNotes/${note._id}`,
       deleteRequest
     );
     setDBnoteSelected({} as Note);
   }
 
-  const [DBnotes, setDBnotes] = useState<Note[]>([]);
-  const [DBnoteSelected, setDBnoteSelected] = useState<Note | undefined>(
-    {} as Note
-  );
   useEffect(() => {
-    async function handleSubmit() {
-      const res = await fetch('http://127.0.0.1:8000/notes/addNotes');
+    async function getNotes() {
+      const res = await fetch(
+        'http://127.0.0.1:5000/notes/addNotes?archived=false'
+      );
       const data = await res.json();
       setDBnotes(data.data.notes);
     }
-    handleSubmit();
+    getNotes();
   });
-
-  async function selectNote(id: number) {
-    const res = await fetch(`http://127.0.0.1:8000/notes/addNotes/${id}`);
-    const data = await res.json();
-    setDBnoteSelected(data.data.note);
-    console.log(data.data.note.selected);
-    const requestOptions = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        selected: DBnoteSelected && !DBnoteSelected.selected,
-      }),
-    };
-    await fetch(`http://127.0.0.1:8000/notes/addNotes/${id}`, requestOptions);
-  }
 
   return (
     <div className={styles.section}>
       <div className={styles.headline}>
         {DBnotes.length > 0 && <div className={styles.title}>Saved Notes</div>}
         <div>
-          {DBnotes.length > 0 && DBnoteSelected && DBnoteSelected.selected && (
+          {DBnotes.length > 0 && DBnoteSelected && (
             <div className={styles.icons}>
-              <FiEdit3 style={style} onClick={() => handleEdit(selectedNote)} />
+              <FiEdit3
+                className={styles.edit}
+                onClick={() => handleEdit(DBnoteSelected)}
+              />
               {DBnoteSelected.pinned ? (
                 <TbPinnedOff
-                  style={style}
+                  className={styles.pinoff}
                   onClick={() => handleUnpin(DBnoteSelected)}
                 />
               ) : (
                 <TbPin
-                  style={style}
+                  className={styles.pin}
                   onClick={() => handlePin(DBnoteSelected)}
                 />
               )}
               <FiArchive
-                style={style}
+                className={styles.archive}
                 onClick={() => handleArchive(DBnoteSelected)}
               />
               <RiDeleteBin6Line
-                style={style}
+                className={styles.delete}
                 onClick={() => handleDelete(DBnoteSelected)}
               />
             </div>
@@ -170,8 +134,14 @@ function SavedNotes() {
         </div>
       </div>
       {DBnotes.length === 0 ? (
-        <div className={styles.noNotesImage}>
-          <StyledImage src={image} alt="an image" layout="resonsive" priority />
+        <div className={styles.noNotesContent}>
+          <Image
+            src={image}
+            alt="an image"
+            layout="resonsive"
+            priority
+            className={styles.noNotesImage}
+          />
           <div className={styles.noNotesText}>
             No saved notes yet :( , <br />
             try to add some to make me happy :)
@@ -183,16 +153,18 @@ function SavedNotes() {
             <div
               className={styles.note}
               onClick={() => {
-                selectNote(DBnote._id);
+                setDBnoteSelected(DBnoteSelected ? undefined : DBnote);
               }}
-              style={{
-                backgroundColor: DBnote.selected ? '#FFF' : '#cbd5e1',
-              }}
+              style={
+                {
+                  // backgroundColor: DBnoteSelected && '#FFF',
+                }
+              }
             >
               <div className={styles.container}>
                 <div className={styles.content}>
                   <div>{parse(`${DBnote.body}`)}</div>
-                  {DBnote.pinned && <TbPin style={style2} />}
+                  {DBnote.pinned && <TbPin className={styles.pinned} />}
                 </div>
               </div>
             </div>

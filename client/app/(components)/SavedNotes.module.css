@@ -20,12 +20,17 @@
   font-weight: 500;
 }
 
-.noNotesImage {
+.noNotesContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
   margin: 6rem 3rem;
+}
+
+.noNotesImage {
+  width: 30rem;
+  height: 22.7rem;
 }
 
 .noNotesText {
@@ -35,6 +40,21 @@
 .icons {
   display: flex;
   gap: 2rem;
+}
+
+.edit,
+.pin,
+.pinoff,
+.archive,
+.delete {
+  font-size: 2.4rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.pinned {
+  font-size: 2.4rem;
+  color: #000;
 }
 
 .note {
@@ -47,6 +67,7 @@
   border-bottom: 1px solid black;
   background-color: #cbd5e1;
   cursor: pointer;
+  user-select: none;
 }
 
 .content {
@@ -66,5 +87,10 @@
   .section {
     grid-column: 1/-1;
     grid-row: 2/3;
+  }
+
+  .noNotesImage {
+    width: 40rem;
+    height: 29rem;
   }
 }
