@@ -4,7 +4,6 @@
 
 ## quick notes about the project
 
-- if any of the links didn't work as expected, it is ok as the project is still under development
 - this is a full-stack app of React and Next.Js for the frontend and Express and MongoDB for the backend
 
 ### Contact

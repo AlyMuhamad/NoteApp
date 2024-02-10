@@ -62,8 +62,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use('/notes/addNotes', noteRouter);
-app.use('/users', userRouter);
+app.use('/api/v1/notes/addNotes', noteRouter);
+app.use('/api/v1/users', userRouter);
 
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

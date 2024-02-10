@@ -38,7 +38,7 @@ function SavedNotes() {
       }),
     };
     await fetch(
-      `http://localhost:5000/notes/addNotes/${note._id}`,
+      `http://localhost:5000/api/v1/notes/addNotes/${note._id}`,
       requestOptions
     );
 
@@ -56,7 +56,7 @@ function SavedNotes() {
       }),
     };
     await fetch(
-      `http://127.0.0.1:5000/notes/addNotes/${note._id}`,
+      `http://127.0.0.1:5000/api/v1/notes/addNotes/${note._id}`,
       requestOptions
     );
 
@@ -72,7 +72,7 @@ function SavedNotes() {
       body: JSON.stringify({ archived: true }),
     };
     await fetch(
-      `http://127.0.0.1:5000/notes/addNotes/${note._id}`,
+      `http://127.0.0.1:5000/api/v1/notes/addNotes/${note._id}`,
       requestOptions
     );
 
@@ -82,7 +82,7 @@ function SavedNotes() {
   async function handleDelete(note: Note) {
     const deleteRequest = { method: 'DELETE' };
     await fetch(
-      `http://127.0.0.1:5000/notes/addNotes/${note._id}`,
+      `http://127.0.0.1:5000/api/v1/notes/addNotes/${note._id}`,
       deleteRequest
     );
     setDBnoteSelected({} as Note);
@@ -91,7 +91,7 @@ function SavedNotes() {
   useEffect(() => {
     async function getNotes() {
       const res = await fetch(
-        'http://127.0.0.1:5000/notes/addNotes?archived=false'
+        'http://127.0.0.1:5000/api/v1/notes/addNotes?archived=false'
       );
       const data = await res.json();
       setDBnotes(data.data.notes);

@@ -28,7 +28,7 @@ function Archive() {
       body: JSON.stringify({ archived: false }),
     };
     await fetch(
-      `http://127.0.0.1:5000/notes/addNotes/${note._id}`,
+      `http://127.0.0.1:5000/api/v1/notes/addNotes/${note._id}`,
       requestOptions
     );
 
@@ -38,7 +38,7 @@ function Archive() {
   async function handleErase(note: Note) {
     const deleteRequest = { method: 'DELETE' };
     await fetch(
-      `http://127.0.0.1:5000/notes/addNotes/${note._id}`,
+      `http://127.0.0.1:5000/api/v1/notes/addNotes/${note._id}`,
       deleteRequest
     );
     setSelectednote(undefined);
@@ -47,7 +47,7 @@ function Archive() {
   useEffect(() => {
     async function getArchivedNotes() {
       const res = await fetch(
-        'http://127.0.0.1:5000/notes/addNotes?archived=true'
+        'http://127.0.0.1:5000/api/v1/notes/addNotes?archived=true'
       );
       const data = await res.json();
       setDBArchive(data.data.notes);

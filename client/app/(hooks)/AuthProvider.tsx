@@ -46,7 +46,10 @@ const AuthProvider = ({ children }: any) => {
     };
 
     try {
-      const res = await fetch('http://127.0.0.1:5000/users/Me', requestOptions);
+      const res = await fetch(
+        'http://127.0.0.1:5000/api/v1/users/Me',
+        requestOptions
+      );
       const data = await res.json();
       return data.data.user;
     } catch (err: any) {

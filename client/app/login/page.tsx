@@ -21,7 +21,10 @@ function Login() {
     e.preventDefault();
 
     auth
-      .authAction({ email, password }, 'http://127.0.0.1:5000/users/login')
+      .authAction(
+        { email, password },
+        'http://127.0.0.1:5000/api/v1/users/login'
+      )
       .then((result: any) => {
         if (result) {
           setEmail('');

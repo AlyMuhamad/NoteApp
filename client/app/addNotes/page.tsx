@@ -31,7 +31,10 @@ function AddNotes() {
     };
 
     if (authenticated) {
-      await fetch('http://127.0.0.1:5000/notes/addNotes', requestOptions);
+      await fetch(
+        'http://127.0.0.1:5000/api/v1/notes/addNotes',
+        requestOptions
+      );
     }
 
     setText('');

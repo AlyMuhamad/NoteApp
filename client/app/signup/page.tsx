@@ -30,7 +30,7 @@ function Signup() {
           password,
           passwordConfirm,
         },
-        'http://127.0.0.1:5000/users/signup'
+        'http://127.0.0.1:5000/api/v1/users/signup'
       )
       .then((result: any) => {
         if (result) {
