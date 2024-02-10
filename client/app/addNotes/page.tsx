@@ -4,7 +4,6 @@ import styles from './page.module.css';
 import { useState } from 'react';
 import AppLayout from '../(ui)/AppLayout';
 import { Editor } from '@tinymce/tinymce-react';
-import Link from 'next/link';
 
 function AddNotes() {
   const [value, setValue] = useState<string | undefined>();
@@ -26,7 +25,7 @@ function AddNotes() {
       },
       body: JSON.stringify({
         body: text,
-        user: '65c4d343a1d977f90308ca2a',
+        user: '65c776dea499bc12d54dfe3a',
       }),
     };
 

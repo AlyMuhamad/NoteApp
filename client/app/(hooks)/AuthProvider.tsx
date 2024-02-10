@@ -66,7 +66,7 @@ const AuthProvider = ({ children }: any) => {
     e.preventDefault();
     try {
       localStorage.removeItem('token');
-      router.replace('/blog');
+      router.replace('/');
     } catch (err: any) {
       console.error(err.message);
     }

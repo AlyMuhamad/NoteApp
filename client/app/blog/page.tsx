@@ -5,7 +5,9 @@ function Blog() {
   return (
     <div className={styles.section}>
       <Header />
-      <div>Hello world from the blog section</div>
+      <div className={styles.text}>
+        Welcome to our blog, we are still working on this feature
+      </div>
     </div>
   );
 }

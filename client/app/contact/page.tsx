@@ -5,7 +5,6 @@ function Contact() {
   return (
     <div className={styles.section}>
       <Header />
-      <div></div>
     </div>
   );
 }
