@@ -8,7 +8,7 @@
 
 ### Contact
 
-contact me if you any enquiries about this project
+contact me if you any enquiries about this project or any other project:
 
 - **[Email](mailto:alimoh0801@gmail.com)**
 - **[Instagram](https://www.instagram.com/alymohamedll/)**
